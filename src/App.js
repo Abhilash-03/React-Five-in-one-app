@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import Accordian from './components/Accordian';
+import Carousel from './components/Carousel'
+import Navbar from './components/Navbar';
+import { Route, Routes} from 'react-router-dom';
+import Quotes from './components/Quotes';
+import ShoppingList from './components/ShoppingList';
+import GithubUsers from './components/GithubUsers';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar/>
+      <Routes>
+      <Route index element={ <Carousel title = "Image Carousel"/>} />
+      <Route path='/accordian' element={<Accordian/>} />
+      <Route path='/quote' element={<Quotes/>} />
+      <Route path='/shopping-list' element={<ShoppingList/>} />
+      <Route path='/github-user' element={<GithubUsers/>} />
+    </Routes>
     </div>
   );
 }

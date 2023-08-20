@@ -1,38 +1,456 @@
-.App {
-  text-align: center;
+body{
+  background-color: black;
+  color: white;
+}
+.slider button {
+   height: 40px;
+   margin: 1rem;
+   width: 50%;
+   font-size: 17px;
+   border: 2px solid black;
+   box-shadow: 2px 2px 4px rgb(72, 72, 72);
+   background-color: teal;
+   color: white;
+   border-radius: 5px;
+   cursor: pointer;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.slider .btns{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: absolute;
+  bottom: -20%;
+  left: 25%;
+  width: 50%;
+}
+.slider{
+  max-width: 800px;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  margin: 1rem auto;
+  flex-direction: column;
+  position: relative;
+
+}
+
+.slider img{
+   height: 400px;
+   width: 500px;
+   border: 2px solid black;
+   border-radius: 20px;
+   filter: drop-shadow(0 0 20px rgb(118, 118, 255));
+   transition: blur 1s ease-in-out;
+   animation: anim 1s ease-out;
+}
+
+@keyframes anim {
+   0%{
+     opacity: 0;
+     transform: translate(0px, -80px);
+   }
+
+   100%{
+    opacity: 1;
+    transform: translate(0);
+
+   }
+}
+.heading{
+  text-align: center;
+  padding-bottom: 2rem;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.accordian{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: blue;
+  border-radius: 10px;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.accordian h1{
+  text-align: center;
+}
+.accordian ul{
+  display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+    border: 2px solid black;
+    background: white;
+    color: black;
+    padding: 2rem;
+    border-radius: 20px;
+}
+
+.accordian ul li{
+  border: 1px solid black;
+    padding: 1rem;
+    justify-content: space;
+    background: antiquewhite;
+    font-size: 18px;
+    border-radius: 5px;
+    color: black;
+    list-style: none;
+    font-weight: bold;
+    margin: 1rem 10px;
+    box-shadow: 3px 3px 8px grey;
+}
+
+.accordian ul li .question-list{
+  display: flex;
+  justify-content: space-between;
+}
+
+.accordian ul li button{
+  border: 2px solid blue;
+  border-radius: 5px;
+  font-size: 19px;
+  width: 30px;
+  font-weight: bold;
+}
+
+.accordian ul li .txt{
+  font-weight: normal;
+  font-size: 17px;
+}
+
+.quoteBox{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  color: white;
+  background-color: black;
+  padding: 2rem 1rem;
+  max-width: 600px;
+  margin: 2rem auto;
+  height: 300px;
+  border-radius: 10px;
+  font-size: 19px;
+  font-family: Georgia, 'Times New Roman', Times, serif ;
+  box-shadow: 3px 3px 30px #7676ff;
+}
+
+.quoteBox .quoteTxt{
+  text-align: center;
+  font-size: 23px;
+  
+}
+
+.quoteBox .quoteTxt::before{
+  content: '“ ';
+  color: #7676ff;
+  font-size: 42px;
+  font-weight: bolder;
+}
+.quoteBox .quoteTxt::after{
+  content: '”';
+  color: rgb(118, 118, 255);
+  font-size: 42px;
+  font-weight: bolder;
+}
+
+.quoteBox .quoteAuthor{
+  color: red;
+}
+
+.quoteBox .quoteBtn{
+  height: 40px;
+  width: 50%;
+  margin-top: 2rem;
+  border: 2px solid rgb(118, 118, 255);
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  box-shadow: 2px 2px 5px white;
+  transition: all .5s ease;
+  position: relative;
+  
+}
+
+.quoteBox .quoteBtn:hover{
+  background: linear-gradient(to right, rgb(118, 118, 255), white);
+  color: black;
+}
+
+
+.listBox{
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  margin: 2rem auto;
+  border: 2px dashed white;
+  padding: 1rem;
+  background: #ff7575;
+}
+
+
+.listBox form .input{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ form input[type="text"]{
+  width: 35%;
+    height: 40px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid black;
+    font-size: 17px;
+    margin: 0 10px;
+    box-shadow: 1px 1px 6px white;
+    outline: none;
+}
+
+.Btn{
+  border: 2px solid white;
+  background: black;
+  color: white;
+  height: 35px;
+  width: 10%;
+  border-radius: 5px;
+}
+.listBox form h1{
+  color: #161641;
+}
+
+.listBox ul{
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto;
+  align-items: center;
+  width: 60%;
+  height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 10px;
+
+}
+
+.listBox ul::-webkit-scrollbar{
+  width: 7px;
+  color: #7676ff;
+}
+.listBox ul::-webkit-scrollbar-track{
+  border-radius: 10px;
+  /* box-shadow: 0 0 10px black; */
+  margin: 1px 4px;
+
+  border: 4px solid rgb(252, 232, 232);
+}
+
+.listBox ul::-webkit-scrollbar-thumb{
+  background: #280275;
+  border-radius: 10px;
+}
+
+
+.listBox ul li{
+  list-style: none;
+    color: black;
+    font-size: 18px;
+    border: 1px solid black;
+    background: #d4b9ff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    border-radius: 6px;
+    padding: 10px;
+    margin: 4px 0;
+}
+
+.listBox ul li .deleteBtn{
+  width: 10%;
+  border-radius: 5px;
+  background: black;
+  color: white;
+  font-size: 18px;
+  font-weight: bolder;
+  border: 2px solid white;
+}
+
+.githubSearch{
+   display: flex;
+    flex-direction: column;
+    max-width: 750px;
+    margin: 1rem auto;
+    border: 1px solid gray;
+    padding: 1rem;
+}
+
+.githubSearch img{
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  margin: 13px;
+}
+.githubSearch ul{
+  max-height: 550px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+.githubSearch ul li{
+  list-style-type: none;
+  border: 2px solid black;
+  margin: 7px;
+  width: 65%;
+  background-color: rgb(190, 190, 190);
+  border-radius: 10px;
+
+}
+
+.githubSearch li a{
+  color: black;
+  font-size: 19px;
+  font-weight: bold;
+  text-decoration-color: rgb(42, 44, 134);
+
+}
+
+.githubSearch input[type="text"]{
+  width: 65%;
+  height: 50px;
+}
+
+.githubSearch .Btn{
+  width: auto;
+  height: 45px;
+  background: darkblue;
+  box-shadow: 4px 4px 4px #6c85d3;
+}
+
+.githubSearch .Btn:hover{
+  background: #38a1fd !important;
+  color: black;
+  border: 2px solid black;
+}
+
+.githubSearch .Btn:focus{
+  background: #38a1fd !important;
+  color: black;
+  border: 2px solid black;
+  animation: click .2s linear;
+  
+}
+
+.githubSearch ul::-webkit-scrollbar{
+  width: 10px;
+  color: rgb(9, 22, 120);
+}
+
+.githubSearch ul::-webkit-scrollbar-track{
+  border-radius: 14px;
+  border: 5px solid rgb(240, 91, 91);
+}
+
+.githubSearch ul::-webkit-scrollbar-thumb{
+  background: linear-gradient(to bottom,#38a1fd, white ) ; 
+  border-radius: 10px;
+  border: 2px solid black;
+}
+
+@keyframes click {
+  from{
+
+    transform: scale(1) translate(4px, 4px);
+    box-shadow: 4px 4px 4px #6c85d3;
   }
-  to {
-    transform: rotate(360deg);
+  to{
+    transform: scale(.9) translate(0);
+    box-shadow: none;  
+
+  }
+}
+
+@media screen and (max-width: 630px) {
+   .slider img{
+    height: 235px;
+    width: 270px;
+   }
+
+   .slider .btns{
+    bottom: -33%;
+    left: 4%;
+    width: 92%;
+   }
+
+   .accordian ul{
+    margin: 1rem -23px;
+    padding: 1rem;
+   }
+
+   .accordian ul li, .accordian ul li .txt{
+    font-size: 13px;
+   }
+
+   .quoteBox{
+    width: 290px;
+    font-size: 15px;
+    height: auto;
+   }
+
+   .quoteBox .quoteTxt{
+    font-size: 19px;
+    line-height: 1.3;
+   }
+ 
+   form .input input[type="text"], .listBox ul, .listBox ul li {
+       width: 100%;
+   }
+
+   .listBox ul li .deleteBtn{
+    width: 13%;
+   }
+
+   .input .Btn{
+    width: auto;
+   }
+
+   .githubSearch .inp{
+    margin: 0;
+   }
+   .githubSearch .Btn{
+    width: 100%;
+    height: 35px;
+    margin: 10px 0;
+   }
+
+   .githubSearch ul li{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+   }
+   .githubSearch img{
+    width: 60px;
+    height: 60px;
+   }
+   .githubSearch li a{
+    font-size: 17px;
+    margin-bottom: 7px;
+   }
+
+   .githubSearch ul::-webkit-scrollbar{
+    width: 7px;
+  }
+
+  .githubSearch ul{
+    padding: 0 10px;
   }
 }
