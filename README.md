@@ -1,3 +1,13 @@
+# About The App
+This is a react webapp in which 5 Small Projects are made on one application using a router, routing all of the 5 apps in the application.
+
+## 5 apps are:-
+- Carousel
+- FAQ/Accordion
+- Random Quotes Generator
+- Shopping List app
+- Search Github User app
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
