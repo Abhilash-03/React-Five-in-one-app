@@ -4,39 +4,51 @@ import Button from "./Button";
 const GithubUsers = () => {
   const [user, setUser] = useState([]);
   const [inputUser, setInputUser] = useState("");
-  const [storeInfo, setStoreInfo] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [showError, setShowError] = useState(null);
   const GITHUB_URL = "https://api.github.com";
 
   const ref = useRef();
 
   useEffect(() => {
-    storeInfo.length && getUser(storeInfo);
-  }, [storeInfo]);
 
-  const handleSubmit = () => {
-    setStoreInfo(inputUser);
-    ref.current.focus();    
-  };
-
-  const getUser = async (query) => {
+    if(inputUser){
+    setIsLoading(true);
+    const getUser = setTimeout (async () => {
     try {
-      const response = await fetch(`${GITHUB_URL}/search/users?q=${query}`);
+      const response = await fetch(`${GITHUB_URL}/search/users?q=${inputUser}`);
+
       if (!response.ok) throw Error("Something went wrong!");
       else {
         const userData = await response.json();
-        setUser(query.length !== 0 ? userData.items : []);
+        setUser(inputUser.length !== 0 ? userData.items : []);
         setShowError(null);
       }
     } catch (err) {
       setShowError(`Error: ${err.message}`);
+    } finally{
+      setIsLoading(false);
     }
+  }, 1000);
+  return () => clearTimeout(getUser);
+}
+else{
+  setUser([]);
+  setIsLoading(false);
+}
+
+   
+  }, [inputUser]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    ref.current.focus();    
   };
 
   return (
     <div className="githubSearch">
       <h1 className="heading">Search Github User</h1>
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form onSubmit={handleSubmit}>
         <div className="input text-center">
           <input
             type="text"
@@ -48,7 +60,7 @@ const GithubUsers = () => {
             onChange={(e) => setInputUser(e.target.value)}
           />
 
-          <Button title={"Search Github User"} handleSubmit={handleSubmit} />
+          <Button title={"Search Github User"}/>
         </div>
       </form>
 
@@ -61,8 +73,9 @@ const GithubUsers = () => {
       </div>
 
       <ul>
+        {isLoading && <p>Loading...</p> }
         {showError && <p>{showError}</p>}
-        {!showError &&
+        {!showError && !isLoading && 
           (user.length ? (
             user.map((users) => (
               <li key={users.id}>
@@ -72,7 +85,7 @@ const GithubUsers = () => {
                 </a>
               </li>
             ))
-          ) : storeInfo.length ? (
+          ) : user.length ? (
             <p className="error">404, User not found!</p>
           ) : (
             <p>Search Github user to enter username in above input box.</p>
